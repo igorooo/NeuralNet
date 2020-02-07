@@ -8,7 +8,7 @@
 
 #define real_type double
 
-typedef std::vector< std::vector<int> > VectorMatrix;
+typedef std::vector< std::vector<real_type> > VectorMatrix;
 
 class Matrix {
 public:
@@ -22,8 +22,13 @@ public:
 
   Matrix* multiply(double scalar);
   Matrix* multiply(Matrix *mx);
+  Matrix* transpoze();
+  void T(); // transpoze in-place
+
 
   bool isMultiplyPossible(Matrix *b);
+
+  Matrix* operator*(Matrix &mx); //matrix multiplication
 private:
   uint32_t height, width;
   real_type** matrix;

@@ -92,3 +92,40 @@ Matrix* Matrix::multiply(Matrix *mx) {
   }
   return nmatrix;
 }
+
+Matrix* Matrix::transpoze() {
+  Matrix* mx = new Matrix(this->width, this->height);
+
+  for(int n = 0; n < this->height * this->width; n++) {
+    int i = n / this->width;
+    int j = n % this->width;
+
+    mx->matrix[j][i] = this->matrix[i][j];
+  }
+  return mx;
+}
+
+void Matrix::T() {
+  int h = this->height;
+  int w = this->width;
+  real_type** nmatrix = new real_type*[w];
+  for(int i = 0; i < this->width; i++) {
+    nmatrix[i] = new real_type[this->height];
+  }
+
+  for(int n = 0; n < this->height * this->width; n++) {
+    int i = n / this->width;
+    int j = n % this->width;
+
+    nmatrix[j][i] = this->matrix[i][j];
+  }
+
+  this->matrix = nmatrix;
+  int temp = this->height;
+  this->height = this->width;
+  this->width = temp;
+}
+
+Matrix* Matrix::operator*(Matrix &mx) {
+  return this->multiply(&mx);
+}
