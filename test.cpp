@@ -42,4 +42,5 @@ int main() {
   h->T();
   cout<<h->toString()<<endl;
 
+  ct<<"error test"MM<<;
 }
