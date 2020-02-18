@@ -38,7 +38,7 @@ int main() {
 
   h = (*m) * (*n);
   cout<<endl<<h->toString()<<endl<<endl;
-
+  int err = 1 / 0;
   h->T();
   cout<<h->toString()<<endl;
 
